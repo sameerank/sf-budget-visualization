@@ -39,7 +39,7 @@
     </style>
   </head>
   <body>
-    <h2>How Funds Are Allocated in San Francisco's Spending Budget</h2><br />
+    <h2>How Funds Are Allocated in San Francisco's Spending Budget</h2><br /><br />
     <div id="chart"></div>
 
     <script>
@@ -47,7 +47,6 @@
       "organization_group,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27&$group=fund,organization_group",
       function(error, json) {
 
-        //set up graph in same style as original example but empty
         var graph = {"nodes" : [], "links" : []};
 
         json.forEach(function (d) {
