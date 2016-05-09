@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>SF Budget Visualization</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="https://rawgit.com/newrelic-forks/d3-plugins-sankey/master/sankey.js"></script>
     <script src="https://rawgit.com/misoproject/d3.chart/master/d3.chart.min.js"></script>
@@ -68,9 +69,12 @@
         </label>
       </div>
       <div class="column-label">
-        <div style="left:0px">Fund</div><div style="right:0px;">Organization Group</div>
+        <div style="left:0px">Fund</div>
+        <div style="left:42%;">Organization Group</div>
+        <div style="right:0px;">Department</div>
       </div>
-      <div id="chart"></div>
+      <div id="chart">
+      </div>
     </div>
 
     <script>
