@@ -64,7 +64,8 @@
 
     <script>
       d3.json("https://data.sfgov.org/resource/727n-u3zg.json?$select=fund,"+
-      "organization_group,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27&$group=fund,organization_group",
+      "organization_group,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27"+
+      "&fiscal_year=2011&$group=fund,organization_group",
       function(error, json) {
 
         var graph = {"nodes" : [], "links" : []};
