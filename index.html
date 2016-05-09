@@ -13,6 +13,7 @@
         width: 100%;
         height: 100%;
         font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 20px;
       }
       h2 {
         text-align: center;
@@ -28,7 +29,6 @@
         margin-bottom: 5px;
         width: 100%;
         height: 30px;
-        font-size: 20px;
       }
       .column-label div {
         position: absolute;
@@ -51,11 +51,22 @@
         stroke: #000;
         stroke-opacity: .2;
       }
+      .slide-bar {
+        width: 243px;
+        margin: 20px auto;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <h2>How Funds Are Allocated in San Francisco's Spending Budget</h2>
+      <div class="slide-bar">
+        <label> Fiscal Year:
+          <input type="range" min="2011" max="2016" value="2015"
+            onchange="updateFiscalYear(this.value)" id="year-control" />
+          <span id="fiscal-year">2015</span>
+        </label>
+      </div>
       <div class="column-label">
         <div style="left:0px">Fund</div><div style="right:0px;">Organization Group</div>
       </div>
@@ -63,27 +74,49 @@
     </div>
 
     <script>
-      d3.json("https://data.sfgov.org/resource/727n-u3zg.json?$select=fund,"+
-      "organization_group,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27"+
-      "&fiscal_year=2011&$group=fund,organization_group",
-      function(error, json) {
+      function updateFiscalYear(newFiscalYear) {
+        document.getElementById("fiscal-year").innerHTML=newFiscalYear;
+        makeChartWithYear(newFiscalYear);
+      }
 
+      function makeChartWithYear(fiscalYearInput) {
+        d3.json("https://data.sfgov.org/resource/727n-u3zg.json?$select=fund,"+
+        "organization_group,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27"+
+        "&fiscal_year=" + fiscalYearInput + "&$group=fund,organization_group",
+        function(error, jsonLayerOne) {
+          d3.json("https://data.sfgov.org/resource/727n-u3zg.json?$select=organization_group,"+
+          "department,sum(amount)&$where=revenue_or_spending%20=%20%27Spending%27"+
+          "&fiscal_year=" + fiscalYearInput + "&$group=organization_group,department",
+          function(error, jsonLayerTwo) {
+            visualizeChart(jsonLayerOne.concat(jsonLayerTwo));
+          });
+        });
+      }
+
+
+      function visualizeChart(json) {
         var graph = {"nodes" : [], "links" : []};
-
         json.forEach(function (d) {
           if (+d.sum_amount > 0) {
-            graph.nodes.push({ "name": d.fund });
             graph.nodes.push({ "name": d.organization_group });
-            graph.links.push({ "source": d.fund,
-                              "target": d.organization_group,
-                              "value": +d.sum_amount });
+            if (d.fund) {
+              graph.nodes.push({ "name": d.fund });
+              graph.links.push({ "source": d.fund,
+              "target": d.organization_group,
+              "value": +d.sum_amount });
+            } else {
+              graph.nodes.push({ "name": d.department });
+              graph.links.push({ "source": d.organization_group,
+              "target": d.department,
+              "value": +d.sum_amount });
+            }
           }
         });
 
         // return distinct nodes
         graph.nodes = d3.keys(d3.nest()
-          .key(function (d) { return d.name; })
-          .map(graph.nodes));
+        .key(function (d) { return d.name; })
+        .map(graph.nodes));
 
         // replace source and target with indices
         graph.links.forEach(function (d, i) {
@@ -96,15 +129,16 @@
           graph.nodes[i] = { "name": d };
         });
 
-
+        d3.select("svg").remove();
         var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
 
         chart
-          .nodeWidth(15)
-          .nodePadding(10)
-          .draw(graph);
-      });
+        .nodeWidth(15)
+        .nodePadding(10)
+        .draw(graph);
+      }
 
+      document.addEventListener("DOMContentLoaded", makeChartWithYear(2015))
     </script>
   </body>
 </html>
