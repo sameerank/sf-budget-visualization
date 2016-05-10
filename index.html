@@ -118,8 +118,8 @@
 
         // return distinct nodes
         graph.nodes = d3.keys(d3.nest()
-          .key(function (d) { return d.name; })
-          .map(graph.nodes));
+        .key(function (d) { return d.name; })
+        .map(graph.nodes));
 
         // replace source and target with indices
         graph.links.forEach(function (d, i) {
