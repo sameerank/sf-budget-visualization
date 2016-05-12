@@ -5,4 +5,4 @@ server.start({
   directories: [
     './'
   ]
-});
+}).listen(process.env.PORT || 5000);
