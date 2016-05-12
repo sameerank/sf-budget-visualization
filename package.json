@@ -18,11 +18,11 @@
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
+    "express": "^4.13.4",
     "flux": "^2.1.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "webpack": "^1.13.0",
-    "pushstate-server": "^1.8.1"
+    "webpack": "^1.13.0"
   },
   "devDependencies": {
     "eslint": "^1.10.3",
