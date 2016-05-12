@@ -1,0 +1,41 @@
+{
+  "name": "sf-budget-visualization",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run watch-css & npm run watch-webpack",
+    "watch-webpack": "webpack --watch",
+    "build-css": "node-sass --include-path scss css/input.scss css/output.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
+    "flux": "^2.1.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "webpack": "^1.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-google": "^0.3.0",
+    "eslint-plugin-react": "^3.13.1",
+    "node-sass": "^3.7.0",
+    "nodemon": "^1.9.2",
+    "object.omit": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sameerank/sf-budget-visualization.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sameerank/sf-budget-visualization/issues"
+  },
+  "homepage": "https://github.com/sameerank/sf-budget-visualization#readme",
+  "description": ""
+}
