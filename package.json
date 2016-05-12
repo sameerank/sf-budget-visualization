@@ -7,7 +7,8 @@
     "watch": "npm run watch-css & npm run watch-webpack",
     "watch-webpack": "webpack --watch",
     "build-css": "node-sass --include-path scss css/input.scss css/output.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "keywords": [],
   "author": "",
@@ -37,5 +38,9 @@
     "url": "https://github.com/sameerank/sf-budget-visualization/issues"
   },
   "homepage": "https://github.com/sameerank/sf-budget-visualization#readme",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "5.1.0",
+    "npm": "3.3.12"
+  }
 }
