@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run watch-css & npm run watch-webpack",
-    "watch-webpack": "webpack --watch",
+    "watch-webpack": "./node_modules/.bin/webpack --watch",
     "build-css": "node-sass --include-path scss css/input.scss css/output.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "postinstall": "./node_modules/.bin/webpack"
