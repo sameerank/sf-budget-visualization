@@ -38,7 +38,7 @@ var App = React.createClass({
     this.state.spending === 'sub_object') {
       this.setState({height: '2000px'});
     } else {
-      this.setState({height: '900px'});
+      this.setState({height: '1200px'});
     }
 
     this._visualizeGraph(JSONStore.graph());
