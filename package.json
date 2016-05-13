@@ -4,10 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm run watch-css & npm run watch-webpack",
+    "watch": "npm run watch-css & npm run watch-webpack & npm run watch-nodemon",
     "watch-webpack": "./node_modules/.bin/webpack --watch",
-    "build-css": "node-sass --include-path scss css/input.scss css/output.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "./node_modules/.bin/node-sass --include-path scss css/input.scss css/output.css",
+    "watch-css": "./node_modules/.bin/nodemon -e scss -x \"npm run build-css\"",
+    "watch-nodemon": "./node_modules/.bin/nodemon server.js",
     "postinstall": "./node_modules/.bin/webpack",
     "start": "node server.js"
   },

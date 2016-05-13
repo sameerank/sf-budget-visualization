@@ -9,7 +9,9 @@ var NodeSelector = React.createClass({
       <select value={this.props.selected} onChange={this._handleChange}>
         {
           Object.keys(this.props.nodeOptions).map(function(node, index) {
-            return <option key={index} value={node}>{this.props.nodeOptions[node]}</option>
+            return <option key={index} value={node}>
+              {this.props.nodeOptions[node]}
+            </option>;
           }.bind(this))
         }
       </select>

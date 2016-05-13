@@ -20164,8 +20164,9 @@
 	    return {
 	      year: 2015,
 	      graph: JSONStore.graph(),
-	      revenue: "character",
-	      spending: "department"
+	      revenue: 'character',
+	      spending: 'department',
+	      height: '900px'
 	    };
 	  },
 	
@@ -20182,6 +20183,13 @@
 	    this.setState({
 	      graph: JSONStore.graph()
 	    });
+	
+	    if (this.state.revenue === 'object' || this.state.spending === 'object' || this.state.revenue === 'sub_object' || this.state.spending === 'sub_object') {
+	      this.setState({ height: '2000px' });
+	    } else {
+	      this.setState({ height: '900px' });
+	    }
+	
 	    this._visualizeGraph(JSONStore.graph());
 	  },
 	
@@ -20191,7 +20199,6 @@
 	  },
 	
 	  _visualizeGraph: function () {
-	
 	    d3.select("svg").remove();
 	    var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
 	
@@ -20201,11 +20208,11 @@
 	  _nodeOptionsExcept: function (key) {
 	    // These columns don't work in my browser: program, fund_type, fund_category
 	    var options = {
-	      organization_group: "Organization Group",
-	      department: "Department",
-	      character: "Character",
-	      object: "Object",
-	      sub_object: "Sub-object"
+	      organization_group: 'Organization Group',
+	      department: 'Department',
+	      character: 'Character',
+	      object: 'Object',
+	      sub_object: 'Sub-object'
 	    };
 	    return omit(options, key);
 	  },
@@ -20257,7 +20264,24 @@
 	            updateCategory: this._updateSpending })
 	        )
 	      ),
-	      React.createElement('div', { id: 'chart' })
+	      React.createElement('div', { id: 'chart', style: { height: this.state.height } }),
+	      React.createElement(
+	        'div',
+	        null,
+	        'Caveat: Excludes negative cash flow data. Data source ',
+	        React.createElement(
+	          'a',
+	          { href: 'https://data.sfgov.org/City-Management-and-Ethics/Budget/xdgd-c79v' },
+	          'here'
+	        ),
+	        '. Source code ',
+	        React.createElement(
+	          'a',
+	          { href: 'https://github.com/sameerank/sf-budget-visualization.git' },
+	          'here'
+	        ),
+	        '.'
+	      )
 	    );
 	  }
 	
