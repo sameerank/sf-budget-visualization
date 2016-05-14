@@ -5,9 +5,10 @@ View it live at [http://sf-budget-visualization.herokuapp.com/](http://sf-budget
 
 #### To install and run locally:
 1. Clone repository and cd into the directory
-2. Install node_modules by typing ```npm install```
-3. ```npm start``` to start the server at [http://localhost:8080/](http://localhost:8080/)
-4. Alternatively, you can watch all the build tools and the server if you run ```npm run watch```
+2. If you don't have Node.js, [you'll want to get that first](https://docs.npmjs.com/getting-started/installing-node).
+3. Install node_modules by typing ```npm install```
+4. ```npm start``` to start the server at [http://localhost:8080/](http://localhost:8080/)
+5. Alternatively, you can watch all the build tools and the server if you run ```npm run watch```
 
 #### Issues that can be addressed:
 - Incorporate negative cash flow data into diagram
