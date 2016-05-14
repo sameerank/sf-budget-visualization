@@ -11,7 +11,7 @@ View it live at [http://sf-budget-visualization.herokuapp.com/](http://sf-budget
 5. Alternatively, you can watch all the build tools and the server if you run ```npm run watch```
 
 #### Issues that can be addressed:
-- Incorporate negative cash flow data into diagram
+- Incorporate negative cash flow data into the diagram
 - Resize container div so that it does not crop out portions of the interior svg
 - Improve resizing so that highly granular data, e.g. the sub-object field, is easier to view
 - Use a tooltip to show additional details when hovering over a node or a link
