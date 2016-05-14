@@ -16,3 +16,4 @@ View it live at [http://sf-budget-visualization.herokuapp.com/](http://sf-budget
 - Improve resizing so that highly granular data, i.e. the sub-object field, is easier to view
 - Use a tooltip to show additional details when hovering over a node or a link
 - Use [lifecycle methods for D3.js](http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/)
+- Write [tests](https://facebook.github.io/jest/docs/tutorial-react.html)
