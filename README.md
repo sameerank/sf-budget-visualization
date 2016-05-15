@@ -1,5 +1,5 @@
 # sf-budget-visualization
-Visualization of cash flow in the San Francisco budget. Made with React.js, Flux, D3.js, Babel, Webpack, and Sass.
+Visualization of cash flow in the San Francisco budget. Where does the money come from and where does it go? Made with React.js, Flux, D3.js, Babel, Webpack, and Sass.
 
 View it live at [http://sf-budget-visualization.herokuapp.com/](http://sf-budget-visualization.herokuapp.com/)
 
