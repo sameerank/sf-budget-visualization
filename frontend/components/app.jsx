@@ -10,9 +10,9 @@ var omit = require('object.omit');
 var App = React.createClass({
   getInitialState: function() {
     return {
-      year: 2015,
+      year: 2017,
       graph: JSONStore.graph(),
-      revenue: 'character',
+      revenue: 'organization_group',
       spending: 'department',
       height: '900px'
     };

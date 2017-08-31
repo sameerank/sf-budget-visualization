@@ -8,7 +8,7 @@ var YearSelector = React.createClass({
     return (
       <div className="slide-bar">
         <label> Fiscal Year:
-          <input type="range" min="2010" max="2017" onChange={this.handleChange}
+          <input type="range" min="2010" max="2018" onChange={this.handleChange}
             value={this.props.year} id="year-control" />
           <span id="fiscal-year">{this.props.year}-{1 + parseInt(this.props.year)}</span>
         </label>
